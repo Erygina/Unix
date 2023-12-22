@@ -16,7 +16,7 @@ while true; do
   exec 3>"$lock_file_path"
   flock -x 3
   filename=$(create_filename)
-  container_id=$(/dev/urandom tr -dc A-Za-z0-9 | head -c14)
+  container_id=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c14)
   echo "Container ID: $container_id, file number: $filename" > "shared_data/$filename"
   echo "Create container_id $container_id and filename $filename"
   exec 3<&-
