@@ -1,7 +1,6 @@
 #!/bin/bash
 
 lock_file_path="/shared_data/lock"
-delay_sec=1
 
 # Функция создания имени файла
 create_filename() {
@@ -21,7 +20,7 @@ while true; do
   echo "Container ID: $container_id, file number: $filename" > "shared_data/$filename"
   echo "Create container_id $container_id and filename $filename"
   exec 3<&-
-  sleep delay_sec
+  sleep 1
   rm "/shared_data/$filename"
-  sleep delay_sec
+  sleep 1
 done
